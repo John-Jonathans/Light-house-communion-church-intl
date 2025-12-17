@@ -44,16 +44,16 @@
         
         /* Pulse for Drag Hint */
         @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); } /* Gold Pulse */
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); } 
             70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
         }
         .drag-hint { animation: pulse-ring 2s infinite; }
 
-        /* NEW: "Alive" Background Animation (Slow Zoom) */
+        /* "Alive" Background Animation (Slow Zoom) */
         @keyframes slowZoom {
             0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
         .animate-alive {
@@ -223,20 +223,20 @@
         // --- NEW HERO with Worship Silhouette & Animation ---
         const Hero = () => {
             return (
-                <div className="relative w-full h-[650px] lg:h-[750px] overflow-hidden">
+                <div className="relative w-full h-[650px] lg:h-[750px] overflow-hidden bg-church-dark">
                     
                     {/* Background Image with "Alive" Animation */}
                     <div className="absolute inset-0 w-full h-full animate-alive">
                         <img 
-                            src="https://images.unsplash.com/photo-1529124235287-c798935c1055?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop" 
                             alt="Worship Silhouette" 
-                            className="w-full h-full object-cover transform scale-100"
+                            className="w-full h-full object-cover"
                         />
                     </div>
 
-                    {/* Royal Purple Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-church-orange/90 via-church-orange/60 to-transparent mix-blend-multiply pointer-events-none"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-church-dark/80 to-transparent pointer-events-none"></div>
+                    {/* Royal Purple Gradient Overlay - LIGHTER NOW */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-church-orange/80 via-church-orange/40 to-transparent mix-blend-multiply pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-church-dark/90 via-transparent to-transparent pointer-events-none"></div>
 
                     {/* Content */}
                     <div className="relative h-full container mx-auto px-6 flex flex-col justify-center">
