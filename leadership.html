@@ -116,13 +116,15 @@
 
         // --- Image Slider Component ---
         const ImageSlider = () => {
-            // *** PASTE YOUR 5 GITHUB/IMAGE LINKS BELOW ***
+            // *** UPDATED PHOTO LIST ***
             const images = [
-                "https://github.com/John-Jonathans/my-website-images/raw/refs/heads/main/382734bc-fd62-4d2f-af35-e93baf131a48.jpg", // 1. Main Bishop Photo
-                "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop", // 2. Wife/Couple Photo
-                "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop",  // 3. Ministry/Preaching
-                "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2073&auto=format&fit=crop", // 4. Community/Outreach
-                "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop"  // 5. Worship/Event
+                "bishop1.jpg",
+                "bishopfacebook.jpg",
+                "bishopndwife1.jpg",
+                "bishopndwife2.jpg",
+                "bishopndwife3.jpg",
+                "bishopndwife4.jpg",
+                "bishopndwife5.jpg"
             ];
 
             const [currentIndex, setCurrentIndex] = useState(0);
@@ -166,9 +168,7 @@
                     <div className="container mx-auto px-6">
                         <div className="flex flex-col lg:flex-row gap-12 items-start">
                             
-                            {/* Left Column: Image Slider 
-                                FIX APPLIED HERE: "relative" on mobile, "lg:sticky" on desktop.
-                            */}
+                            {/* Left Column: Image Slider */}
                             <div className="w-full lg:w-5/12 relative lg:sticky lg:top-24 z-10">
                                 <ImageSlider />
                                 <div className="mt-6 text-center lg:text-left">
@@ -266,3 +266,4 @@
     </script>
 </body>
 </html>
+
