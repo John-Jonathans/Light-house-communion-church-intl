@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# This is where NEW images uploaded via the CMS will go
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  # 1. BOOKS SECTION (This lets you add new books easily)
+  - name: "books"
+    label: "Books"
+    folder: "books" 
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Book Title", name: "title", widget: "string"}
+      - {label: "Cover Image", name: "cover", widget: "image"}
+      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Price / Link", name: "link", widget: "string"}
+
+  # 2. EVENTS / NEWS (This lets you post updates)
+  - name: "news"
+    label: "News & Events"
+    folder: "news"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
