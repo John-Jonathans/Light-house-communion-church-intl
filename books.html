@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Resources - Lighthouse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        /* Custom colors matching your homepage */
+        .church-gold { color: #FFD700; }
+        .bg-church-dark { background-color: #111827; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <nav class="bg-church-dark text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold church-gold">Lighthouse</a>
+            <a href="index.html" class="hover:text-gray-300">Back to Home</a>
+        </div>
+    </nav>
+
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Books & Resources</h1>
+            <p class="text-gray-600">Equipping the saints for the work of ministry.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <div id="book-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-500">
+                    [Cover Image Area]
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Example Book Title</h3>
+                    <p class="text-gray-600 text-sm mb-4">This is how your books will look once we connect the CMS.</p>
+                    <a href="#" class="block w-full bg-black text-white text-center py-2 rounded hover:bg-gray-800 transition">
+                        Get Copy
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-church-dark text-white text-center py-6 mt-12">
+        <p>&copy; 2025 Lighthouse Communion Church International</p>
+    </footer>
+
+</body>
+</html>
