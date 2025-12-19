@@ -56,14 +56,8 @@
             animation: slowZoom 20s ease-in-out infinite;
         }
         
-        /* Utility to hide scrollbar but keep functionality */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased font-sans">
@@ -90,10 +84,11 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            // UPDATED LINKS: Points to books.html instead of resources.html
             const navLinks = [
                 { name: 'Home', href: 'index.html' },
                 { name: 'The Bishop', href: 'leadership.html' },
-                { name: 'Books', href: 'resources.html' },
+                { name: 'Books', href: 'books.html' },
                 { name: 'Events', href: 'events.html' },
             ];
 
@@ -143,13 +138,11 @@
             );
         };
 
-        // --- Draggable Bishop Card ---
         const DraggableBishopCard = () => {
             const [position, setPosition] = useState({ x: 0, y: 0 });
             const [isDragging, setIsDragging] = useState(false);
             const offsetRef = useRef({ x: 0, y: 0 });
 
-            // Handlers merged for mouse and touch to save space
             const handleStart = (clientX, clientY) => {
                 setIsDragging(true);
                 offsetRef.current = { x: clientX - position.x, y: clientY - position.y };
@@ -188,13 +181,8 @@
                         transform: `translate(${position.x}px, ${position.y}px)`,
                         touchAction: 'none',
                         cursor: isDragging ? 'grabbing' : 'grab',
-                        zIndex: 60 /* Very High Z-Index */
+                        zIndex: 60 
                     }}
-                    /* MOBILE FIX: 
-                       1. Reduced width (w-36) on mobile.
-                       2. Changed position to right-2 instead of right-6 to save space.
-                       3. 'translate-y-[40%]' pushes it down so it hangs over the white section.
-                    */
                     className="absolute bottom-0 right-2 md:right-20 lg:right-32 translate-y-[40%] transition-transform duration-75 ease-linear"
                 >
                     <div className="group relative">
@@ -202,7 +190,6 @@
                             <MoveIcon />
                         </div>
                         <div className="relative w-36 h-48 md:w-64 md:h-80 lg:w-72 lg:h-96 rounded-lg overflow-hidden shadow-2xl border-4 border-white bg-gray-900">
-                            {/* Uses your uploaded file name */}
                             <img src="bishop1.jpg" alt="The Bishop" className="w-full h-full object-cover pointer-events-none opacity-90" />
                             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 to-transparent p-3">
                                 <p className="text-white font-serif font-bold text-sm md:text-lg leading-tight">The Bishop</p>
@@ -214,17 +201,9 @@
             );
         };
 
-        // --- NEW HERO (Fixed) ---
         const Hero = () => {
             return (
-                /* FIX 1: Removed 'overflow-hidden' from this main container. 
-                   This allows the child (Bishop Card) to flow OUTSIDE the box.
-                */
                 <div className="relative w-full h-[600px] md:h-[650px] lg:h-[750px] bg-church-dark">
-                    
-                    {/* FIX 2: Created a separate background container WITH 'overflow-hidden'.
-                       This ensures the background image stays contained, while the Bishop Card (which is outside this div) is free.
-                    */}
                     <div className="absolute inset-0 w-full h-full overflow-hidden">
                         <div className="absolute inset-0 w-full h-full animate-alive">
                             <img 
@@ -233,19 +212,16 @@
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        {/* Gradients */}
                         <div className="absolute inset-0 bg-gradient-to-r from-church-orange/90 via-church-orange/50 to-transparent mix-blend-multiply"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-church-dark/95 via-transparent to-transparent"></div>
                     </div>
 
-                    {/* Content */}
                     <div className="relative h-full container mx-auto px-6 flex flex-col justify-center pb-12 md:pb-0">
                         <div className="max-w-2xl text-white animate-fade-in pt-16 md:pt-20">
                             <div className="inline-block px-3 py-1 mb-4 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-[10px] md:text-xs tracking-widest uppercase font-semibold">
                                 Welcome Home
                             </div>
                             
-                            {/* MOBILE FIX: Smaller text on mobile (text-4xl) to prevent layout break */}
                             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 md:mb-6 shadow-sm drop-shadow-lg">
                                 Raising a people of <br className="md:hidden"/>
                                 <span className="text-church-gold italic">Power</span>, <span className="text-church-gold italic">Character</span>, <br className="hidden md:block"/> and <span className="text-church-gold italic">Charisma</span>.
@@ -259,20 +235,19 @@
                                 <a href="events.html" className="bg-white text-church-orange px-6 py-3 md:px-8 md:py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg transform hover:-translate-y-1 text-sm md:text-base">
                                     Service Times
                                 </a>
-                                <a href="resources.html" className="bg-transparent border-2 border-white text-white px-6 py-3 md:px-8 md:py-3 rounded-full font-bold hover:bg-white/10 transition text-sm md:text-base">
-                                    Watch Online
+                                {/* UPDATED LINK: Points to books.html */}
+                                <a href="books.html" className="bg-transparent border-2 border-white text-white px-6 py-3 md:px-8 md:py-3 rounded-full font-bold hover:bg-white/10 transition text-sm md:text-base">
+                                    Books
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    {/* Draggable Bishop - Placed OUTSIDE the background wrapper but inside the relative Hero */}
                     <DraggableBishopCard />
                 </div>
             );
         };
 
-        // --- Welcome Section ---
         const Welcome = () => {
             return (
                 <section className="bg-white relative z-10 pt-32 pb-20 md:pt-40 lg:pt-48">
@@ -290,7 +265,6 @@
                             </a>
                         </div>
                         
-                        {/* YouTube Player */}
                         <div className="order-1 lg:order-2">
                             <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video bg-black border-4 border-white">
                                 <iframe 
@@ -308,7 +282,6 @@
             );
         };
 
-        // --- Ministries ---
         const Ministries = () => {
             const items = [
                 { title: "Children's Ministry", desc: "Nurturing faith in our youngest members.", icon: "👶" },
@@ -336,7 +309,6 @@
             );
         };
 
-        // --- Footer ---
         const Footer = () => {
             return (
                 <footer className="bg-church-dark text-white pt-16 pb-8">
@@ -356,32 +328,10 @@
                                 <ul className="space-y-3">
                                     <li><a href="index.html" className="text-gray-400 hover:text-white transition">Home</a></li>
                                     <li><a href="leadership.html" className="text-gray-400 hover:text-white transition">The Bishop</a></li>
-                                    <li><a href="resources.html" className="text-gray-400 hover:text-white transition">Resources</a></li>
+                                    <li><a href="books.html" className="text-gray-400 hover:text-white transition">Books</a></li>
                                     <li><a href="events.html" className="text-gray-400 hover:text-white transition">Events</a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500"><p>&copy; 2024 Lighthouse Communion Church. All rights reserved.</p></div>
-                    </div>
-                </footer>
-            );
-        };
-
-        const App = () => {
-            return (
-                <div className="min-h-screen flex flex-col">
-                    <Navbar />
-                    <Hero />
-                    <Welcome />
-                    <Ministries />
-                    <Footer />
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+                        <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500"><p>&copy; 2024 Lighthouse Communion Church. All rights
 
